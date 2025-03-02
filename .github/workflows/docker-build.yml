@@ -9,7 +9,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: my-gke-cluster
-  GKE_ZONE: europe-west4
+  GKE_ZONE: europe-west4-b
   IMAGE: my-app
   GAR_ZONE: europe-west4
   GAR_REPO: my-artifact-repo
@@ -26,7 +26,7 @@ jobs:
 
       # Setup gcloud CLI
       - id: 'auth'
-        uses: 'google-github-actions/auth@v4'
+        uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.GKE_SA_KEY }}'
 
@@ -59,7 +59,7 @@ jobs:
 
       # Get credentials for GKE
       - name: Set up GKE credentials
-        uses: google-github-actions/get-gke-credentials@v4
+        uses: google-github-actions/get-gke-credentials@v0
         with:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
