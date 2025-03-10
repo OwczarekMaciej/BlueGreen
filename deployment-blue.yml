@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myfirst-blue-deployment
+  labels:
+    app: my-app
+    version: blue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: my-app
+        version: blue
+    spec:
+      containers:
+      - name: web-app
+        image: europe-west4-docker.pkg.dev/notional-radio-450521-a4/my-artifact-repo/my-app:blue
+        ports:
+        - containerPort: 80
