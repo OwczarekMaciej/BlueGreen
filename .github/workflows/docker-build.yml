@@ -56,6 +56,11 @@ jobs:
       run: |-
         docker push "$GAR_ZONE-docker.pkg.dev/$PROJECT_ID/$GAR_REPO/$IMAGE:$IMAGE_TAG"
 
+    - name: Replace Image in Deployment.yaml
+      run: |
+        sed -i "s|IMAGE_PLACEHOLDER|$GAR_ZONE-docker.pkg.dev/$PROJECT_ID/$GAR_REPO/$IMAGE:$IMAGE_TAG|g" deployment-green.yml
+        cat deployment-green.yml  # Debugging step (remove later)
+
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-

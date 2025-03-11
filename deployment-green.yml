@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: europe-west4-docker.pkg.dev/notional-radio-450521-a4/my-artifact-repo/my-app:green
+        image: IMAGE_PLACEHOLDER
         ports:
         - containerPort: 80
